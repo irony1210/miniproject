@@ -25,7 +25,7 @@ class WorkerThreadFrame(QtCore.QThread):
         self.frame = None
         # read current selected camera id
         self.id = model.camera_mapping.get(view.combobox_camera_list.currentText())
-        self.camera = cv2.VideoCapture(self.id)
+        self.camera = cv2.VideoCapture(self.id, cv2.CAP_DSHOW)
         # set video format to mjpg to compress the frames to increase fps
         self.camera.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter_fourcc(*"MJPG"))
         # set frame resolution

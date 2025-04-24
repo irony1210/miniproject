@@ -1,5 +1,6 @@
 import os
 
+
 import cv2
 import psutil
 from IPython.external.qt_for_kernel import QtCore
@@ -13,9 +14,13 @@ from app_views.threads.worker_thread_frame import WorkerThreadFrame
 from app_views.threads.worker_thread_pause_screen import WorkerThreadPauseScreen
 
 
+
+
 class Controller:
     def __init__(self, model, view):
         super().__init__()
+        
+
         self.model = model
         self.view = view
         model.fullscreen_window = FullscreenView()
@@ -290,6 +295,7 @@ class Controller:
             # get single results from prediction
             (bbox_x1, bbox_y1, bbox_x2, bbox_y2, class_name, confidence) = model.inference_model.get_results(
                 results)
+            
             Controller.draw_items(model, view, frame, bbox_x1, bbox_y1, bbox_x2, bbox_y2, class_name, confidence)
         else:
             if model.is_fullscreen:
